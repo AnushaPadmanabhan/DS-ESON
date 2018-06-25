@@ -20,7 +20,8 @@ Require-Bundle: org.eclipse.xtext;bundle-version="2.5.3";visibility:=reexport,
  org.eclipse.jdt.annotation;bundle-version="[1.0.1,2.0.0)";resolution:=optional,
  org.eclipse.xtext.xbase;bundle-version="2.5.3",
  org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional,
- org.eclipse.core.runtime
+ org.eclipse.core.runtime,
+ org.apache.commons.lang3;bundle-version="3.1.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.emf.eson,
  org.eclipse.emf.eson.building,
@@ -41,5 +42,4 @@ Export-Package: org.eclipse.emf.eson,
  org.eclipse.emf.eson.util,
  org.eclipse.emf.eson.validation
 Bundle-Vendor: Sebastian Benz & Michael Vorburger
-Import-Package: org.apache.commons.lang3;version="3.1.0",
- org.apache.log4j
+Import-Package: org.apache.log4j
