@@ -14,7 +14,6 @@ package org.eclipse.emf.eson;
 
 import org.apache.log4j.Logger;
 import org.eclipse.emf.eson.conversion.DATEValueConverter;
-import org.eclipse.emf.eson.conversion.ExtendedQualifiedNameConverter;
 import org.eclipse.emf.eson.conversion.TerminalConverters;
 import org.eclipse.emf.eson.generators.DelegatingGenerator;
 import org.eclipse.emf.eson.generators.EFactoryFileExtensionRegistry;
@@ -34,7 +33,6 @@ import org.eclipse.xtext.Constants;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.linking.ILinkingDiagnosticMessageProvider;
 import org.eclipse.xtext.linking.ILinkingService;
-import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.parser.IEncodingProvider;
 import org.eclipse.xtext.parser.antlr.IReferableElementsUnloader;
@@ -174,9 +172,5 @@ public class EFactoryRuntimeModule extends AbstractEFactoryRuntimeModule {
 											.getAssociateFileExtensionsWithDefaults(),
 											","));
 		}
-	}
-
-	public Class<? extends IQualifiedNameConverter> bindIQualifiedNameConverter() {
-		return ExtendedQualifiedNameConverter.class;
 	}
 }

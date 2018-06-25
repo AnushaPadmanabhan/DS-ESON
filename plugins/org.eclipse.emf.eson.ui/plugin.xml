@@ -3,7 +3,6 @@
 
 <plugin>
    <extension-point id="properties" name="EMF ESON UI Properties view" schema="schema/properties.exsd"/>
-   <extension-point id="proposalprovider" name="EMF ESON Custom Proposal Provider" schema="schema/proposalprovider.exsd"/>
 
 	<!-- This is our new Editor, including the (editable! right-click New... + Properties!) tree -->
     <extension point="org.eclipse.ui.editors">
