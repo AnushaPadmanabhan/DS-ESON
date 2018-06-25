@@ -15,6 +15,7 @@ package org.eclipse.emf.eson.conversion;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.eclipse.xtext.naming.IQualifiedNameConverter;
 import org.eclipse.xtext.naming.QualifiedName;
 
@@ -25,7 +26,10 @@ public class ExtendedQualifiedNameConverter extends IQualifiedNameConverter.Defa
 		QualifiedName qualifiedName = super.toQualifiedName(qualifiedNameAsString);
 		if (qualifiedNameAsString.endsWith(getDelimiter())) {
 			List<String> segments = new ArrayList<String>(qualifiedName.getSegments());
-			segments.add(""); // support trailing dot (empty last segment)
+			while(StringUtils.endsWith(qualifiedNameAsString, getDelimiter())){	
+				segments.add("");		// support trailing dot (empty last segment)
+				qualifiedNameAsString = StringUtils.removeEnd(qualifiedNameAsString, getDelimiter());
+			}
 			qualifiedName = QualifiedName.create(segments);
 		}
 		return qualifiedName;
