@@ -98,6 +98,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cImportedNamespaceQualifiedNameWithWildcardParserRuleCall_1_0 = (RuleCall)cImportedNamespaceAssignment_1.eContents().get(0);
 		
 		//// TODO Content Assist for EPackage .. but one COULD also import other named NewObject / EObject, instead of EPackages.. hm. As EPackage will be much more common, just support that.	
+		//
 		//NamespaceImport:
 		//	"import" importedNamespace=QualifiedNameWithWildcard;
 		@Override public ParserRule getRule() { return rule; }
@@ -134,20 +135,23 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cLeftCurlyBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cEClassAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final CrossReference cEClassEClassCrossReference_2_0 = (CrossReference)cEClassAssignment_2.eContents().get(0);
-		private final RuleCall cEClassEClassQualifiedNameParserRuleCall_2_0_1 = (RuleCall)cEClassEClassCrossReference_2_0.eContents().get(1);
+		private final RuleCall cEClassEClassStringOrQualifiedNameParserRuleCall_2_0_1 = (RuleCall)cEClassEClassCrossReference_2_0.eContents().get(1);
 		private final Keyword cEqualsSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cNameFeatureAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final CrossReference cNameFeatureEAttributeCrossReference_4_0 = (CrossReference)cNameFeatureAssignment_4.eContents().get(0);
-		private final RuleCall cNameFeatureEAttributeQualifiedNameParserRuleCall_4_0_1 = (RuleCall)cNameFeatureEAttributeCrossReference_4_0.eContents().get(1);
+		private final RuleCall cNameFeatureEAttributeStringOrQualifiedNameParserRuleCall_4_0_1 = (RuleCall)cNameFeatureEAttributeCrossReference_4_0.eContents().get(1);
 		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//// TODO further consider if name mapping is best put in-line into objects.. it would have to repeat in every file..
+		//
 		//// logically this rather belongs into an external mapping, like HUTN's Configuration (HutnConfig), or even better directly into an Xcore as annotations 
+		//
 		//CustomNameMapping:
-		//	"@Name" "{" eClass=[ecore::EClass|QualifiedName] "=" nameFeature=[ecore::EAttribute|QualifiedName] "}";
+		//	"@Name" "{" eClass=[ecore::EClass|StringOrQualifiedName] "=" nameFeature=[ecore::EAttribute|StringOrQualifiedName]
+		//	"}";
 		@Override public ParserRule getRule() { return rule; }
 
-		//"@Name" "{" eClass=[ecore::EClass|QualifiedName] "=" nameFeature=[ecore::EAttribute|QualifiedName] "}"
+		//"@Name" "{" eClass=[ecore::EClass|StringOrQualifiedName] "=" nameFeature=[ecore::EAttribute|StringOrQualifiedName] "}"
 		public Group getGroup() { return cGroup; }
 
 		//"@Name"
@@ -156,26 +160,26 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_1() { return cLeftCurlyBracketKeyword_1; }
 
-		//eClass=[ecore::EClass|QualifiedName]
+		//eClass=[ecore::EClass|StringOrQualifiedName]
 		public Assignment getEClassAssignment_2() { return cEClassAssignment_2; }
 
-		//[ecore::EClass|QualifiedName]
+		//[ecore::EClass|StringOrQualifiedName]
 		public CrossReference getEClassEClassCrossReference_2_0() { return cEClassEClassCrossReference_2_0; }
 
-		//QualifiedName
-		public RuleCall getEClassEClassQualifiedNameParserRuleCall_2_0_1() { return cEClassEClassQualifiedNameParserRuleCall_2_0_1; }
+		//StringOrQualifiedName
+		public RuleCall getEClassEClassStringOrQualifiedNameParserRuleCall_2_0_1() { return cEClassEClassStringOrQualifiedNameParserRuleCall_2_0_1; }
 
 		//"="
 		public Keyword getEqualsSignKeyword_3() { return cEqualsSignKeyword_3; }
 
-		//nameFeature=[ecore::EAttribute|QualifiedName]
+		//nameFeature=[ecore::EAttribute|StringOrQualifiedName]
 		public Assignment getNameFeatureAssignment_4() { return cNameFeatureAssignment_4; }
 
-		//[ecore::EAttribute|QualifiedName]
+		//[ecore::EAttribute|StringOrQualifiedName]
 		public CrossReference getNameFeatureEAttributeCrossReference_4_0() { return cNameFeatureEAttributeCrossReference_4_0; }
 
-		//QualifiedName
-		public RuleCall getNameFeatureEAttributeQualifiedNameParserRuleCall_4_0_1() { return cNameFeatureEAttributeQualifiedNameParserRuleCall_4_0_1; }
+		//StringOrQualifiedName
+		public RuleCall getNameFeatureEAttributeStringOrQualifiedNameParserRuleCall_4_0_1() { return cNameFeatureEAttributeStringOrQualifiedNameParserRuleCall_4_0_1; }
 
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
@@ -186,26 +190,26 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cEFeatureAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final CrossReference cEFeatureEStructuralFeatureCrossReference_0_0 = (CrossReference)cEFeatureAssignment_0.eContents().get(0);
-		private final RuleCall cEFeatureEStructuralFeatureQualifiedNameParserRuleCall_0_0_1 = (RuleCall)cEFeatureEStructuralFeatureCrossReference_0_0.eContents().get(1);
+		private final RuleCall cEFeatureEStructuralFeatureStringOrQualifiedNameParserRuleCall_0_0_1 = (RuleCall)cEFeatureEStructuralFeatureCrossReference_0_0.eContents().get(1);
 		private final Keyword cColonKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cValueValueParserRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
 		
 		//Feature:
-		//	eFeature=[ecore::EStructuralFeature|QualifiedName] ":" value=Value?;
+		//	eFeature=[ecore::EStructuralFeature|StringOrQualifiedName] ":" value=Value?;
 		@Override public ParserRule getRule() { return rule; }
 
-		//eFeature=[ecore::EStructuralFeature|QualifiedName] ":" value=Value?
+		//eFeature=[ecore::EStructuralFeature|StringOrQualifiedName] ":" value=Value?
 		public Group getGroup() { return cGroup; }
 
-		//eFeature=[ecore::EStructuralFeature|QualifiedName]
+		//eFeature=[ecore::EStructuralFeature|StringOrQualifiedName]
 		public Assignment getEFeatureAssignment_0() { return cEFeatureAssignment_0; }
 
-		//[ecore::EStructuralFeature|QualifiedName]
+		//[ecore::EStructuralFeature|StringOrQualifiedName]
 		public CrossReference getEFeatureEStructuralFeatureCrossReference_0_0() { return cEFeatureEStructuralFeatureCrossReference_0_0; }
 
-		//QualifiedName
-		public RuleCall getEFeatureEStructuralFeatureQualifiedNameParserRuleCall_0_0_1() { return cEFeatureEStructuralFeatureQualifiedNameParserRuleCall_0_0_1; }
+		//StringOrQualifiedName
+		public RuleCall getEFeatureEStructuralFeatureStringOrQualifiedNameParserRuleCall_0_0_1() { return cEFeatureEStructuralFeatureStringOrQualifiedNameParserRuleCall_0_0_1; }
 
 		//":"
 		public Keyword getColonKeyword_1() { return cColonKeyword_1; }
@@ -222,7 +226,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cEClassAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final CrossReference cEClassEClassCrossReference_0_0 = (CrossReference)cEClassAssignment_0.eContents().get(0);
-		private final RuleCall cEClassEClassQualifiedNameParserRuleCall_0_0_1 = (RuleCall)cEClassEClassCrossReference_0_0.eContents().get(1);
+		private final RuleCall cEClassEClassStringOrQualifiedNameParserRuleCall_0_0_1 = (RuleCall)cEClassEClassCrossReference_0_0.eContents().get(1);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameValidIDParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
@@ -231,26 +235,31 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//// Re. use of QualifiedName, see SimplestWeiredNameTest (we want to permit EAttribute name to have dots; strange yes, but due to a particular requirement in an in-house closed source product)
+		//
 		//// Also value isn't really optional semantically of course
+		//
 		//// but because it may be missing while typing, this works out much better in practice like this
+		//
 		//// the EFactoryJavaValidator flags it up if it's really missing
+		//
 		//// without this, there are confusing parsing errors, the proposal provider doesn't work as it should, etc.
+		//
 		//// Note that this is also in-lined below; if making changes, adapt below too
-		//NewObject:
-		//	eClass=[ecore::EClass|QualifiedName] name=ValidID? "{" features+=Feature* "}";
+		// NewObject:
+		//	eClass=[ecore::EClass|StringOrQualifiedName] name=ValidID? "{" features+=Feature* "}";
 		@Override public ParserRule getRule() { return rule; }
 
-		//eClass=[ecore::EClass|QualifiedName] name=ValidID? "{" features+=Feature* "}"
+		//eClass=[ecore::EClass|StringOrQualifiedName] name=ValidID? "{" features+=Feature* "}"
 		public Group getGroup() { return cGroup; }
 
-		//eClass=[ecore::EClass|QualifiedName]
+		//eClass=[ecore::EClass|StringOrQualifiedName]
 		public Assignment getEClassAssignment_0() { return cEClassAssignment_0; }
 
-		//[ecore::EClass|QualifiedName]
+		//[ecore::EClass|StringOrQualifiedName]
 		public CrossReference getEClassEClassCrossReference_0_0() { return cEClassEClassCrossReference_0_0; }
 
-		//QualifiedName
-		public RuleCall getEClassEClassQualifiedNameParserRuleCall_0_0_1() { return cEClassEClassQualifiedNameParserRuleCall_0_0_1; }
+		//StringOrQualifiedName
+		public RuleCall getEClassEClassStringOrQualifiedNameParserRuleCall_0_0_1() { return cEClassEClassStringOrQualifiedNameParserRuleCall_0_0_1; }
 
 		//name=ValidID?
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -282,7 +291,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		private final Action cNewObjectAction_2_0_0_0 = (Action)cGroup_2_0_0.eContents().get(0);
 		private final Assignment cEClassAssignment_2_0_0_1 = (Assignment)cGroup_2_0_0.eContents().get(1);
 		private final CrossReference cEClassEClassCrossReference_2_0_0_1_0 = (CrossReference)cEClassAssignment_2_0_0_1.eContents().get(0);
-		private final RuleCall cEClassEClassQualifiedNameParserRuleCall_2_0_0_1_0_1 = (RuleCall)cEClassEClassCrossReference_2_0_0_1_0.eContents().get(1);
+		private final RuleCall cEClassEClassStringOrQualifiedNameParserRuleCall_2_0_0_1_0_1 = (RuleCall)cEClassEClassCrossReference_2_0_0_1_0.eContents().get(1);
 		private final Assignment cNameAssignment_2_0_0_2 = (Assignment)cGroup_2_0_0.eContents().get(2);
 		private final RuleCall cNameValidIDParserRuleCall_2_0_0_2_0 = (RuleCall)cNameAssignment_2_0_0_2.eContents().get(0);
 		private final Keyword cLeftCurlyBracketKeyword_2_0_0_3 = (Keyword)cGroup_2_0_0.eContents().get(3);
@@ -294,14 +303,18 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//Value:
 		//	MultiValue // Following is an in-lined NewObject, if making changes, adapt above too
+		//
 		//	// The Syntactic Predicate => is needed here to solve "Decision can match input such as "RULE_ID '.' RULE_ID {RULE_STRING..RULE_DATE, '}', '['..'false'}" using multiple alternatives: 3, 4"
-		//	| Attribute | => ({NewObject} eClass=[ecore::EClass|QualifiedName]? name=ValidID? "{") features+=Feature* "}"
+		//
+		//	| Attribute | => ({NewObject} eClass=[ecore::EClass|StringOrQualifiedName]? name=ValidID? "{") features+=Feature* "}"
 		//	{Containment.value=current} | => Reference;
 		@Override public ParserRule getRule() { return rule; }
 
 		//MultiValue // Following is an in-lined NewObject, if making changes, adapt above too
+		//
 		//// The Syntactic Predicate => is needed here to solve "Decision can match input such as "RULE_ID '.' RULE_ID {RULE_STRING..RULE_DATE, '}', '['..'false'}" using multiple alternatives: 3, 4"
-		//| Attribute | => ({NewObject} eClass=[ecore::EClass|QualifiedName]? name=ValidID? "{") features+=Feature* "}"
+		//
+		//| Attribute | => ({NewObject} eClass=[ecore::EClass|StringOrQualifiedName]? name=ValidID? "{") features+=Feature* "}"
 		//{Containment.value=current} | => Reference
 		public Alternatives getAlternatives() { return cAlternatives; }
 
@@ -311,27 +324,27 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		//Attribute
 		public RuleCall getAttributeParserRuleCall_1() { return cAttributeParserRuleCall_1; }
 
-		//=> ({NewObject} eClass=[ecore::EClass|QualifiedName]? name=ValidID? "{") features+=Feature* "}"
+		//=> ({NewObject} eClass=[ecore::EClass|StringOrQualifiedName]? name=ValidID? "{") features+=Feature* "}"
 		//{Containment.value=current}
 		public Group getGroup_2() { return cGroup_2; }
 
-		//=> ({NewObject} eClass=[ecore::EClass|QualifiedName]? name=ValidID? "{")
+		//=> ({NewObject} eClass=[ecore::EClass|StringOrQualifiedName]? name=ValidID? "{")
 		public Group getGroup_2_0() { return cGroup_2_0; }
 
-		//{NewObject} eClass=[ecore::EClass|QualifiedName]? name=ValidID? "{"
+		//{NewObject} eClass=[ecore::EClass|StringOrQualifiedName]? name=ValidID? "{"
 		public Group getGroup_2_0_0() { return cGroup_2_0_0; }
 
 		//{NewObject}
 		public Action getNewObjectAction_2_0_0_0() { return cNewObjectAction_2_0_0_0; }
 
-		//eClass=[ecore::EClass|QualifiedName]?
+		//eClass=[ecore::EClass|StringOrQualifiedName]?
 		public Assignment getEClassAssignment_2_0_0_1() { return cEClassAssignment_2_0_0_1; }
 
-		//[ecore::EClass|QualifiedName]
+		//[ecore::EClass|StringOrQualifiedName]
 		public CrossReference getEClassEClassCrossReference_2_0_0_1_0() { return cEClassEClassCrossReference_2_0_0_1_0; }
 
-		//QualifiedName
-		public RuleCall getEClassEClassQualifiedNameParserRuleCall_2_0_0_1_0_1() { return cEClassEClassQualifiedNameParserRuleCall_2_0_0_1_0_1; }
+		//StringOrQualifiedName
+		public RuleCall getEClassEClassStringOrQualifiedNameParserRuleCall_2_0_0_1_0_1() { return cEClassEClassStringOrQualifiedNameParserRuleCall_2_0_0_1_0_1; }
 
 		//name=ValidID?
 		public Assignment getNameAssignment_2_0_0_2() { return cNameAssignment_2_0_0_2; }
@@ -394,27 +407,33 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Reference");
 		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
 		private final CrossReference cValueEObjectCrossReference_0 = (CrossReference)cValueAssignment.eContents().get(0);
-		private final RuleCall cValueEObjectQualifiedNameParserRuleCall_0_1 = (RuleCall)cValueEObjectCrossReference_0.eContents().get(1);
+		private final RuleCall cValueEObjectStringOrQualifiedNameParserRuleCall_0_1 = (RuleCall)cValueEObjectCrossReference_0.eContents().get(1);
 		
 		//Reference: // NOTE we ref. an EObject, and not an [NewObject].. this EObject is always the
+		//
 		//// respective "real" EObject, in the derived state if its a reference to something
+		//
 		//// in an EFactory resource, or a reference to an existing non-EFactory EObject, 
+		//
 		//// e.g. in an integration scenario with other Xtext grammars.
-		//	value=[ecore::EObject|QualifiedName];
+		// value=[ecore::EObject|StringOrQualifiedName];
 		@Override public ParserRule getRule() { return rule; }
 
 		//// NOTE we ref. an EObject, and not an [NewObject].. this EObject is always the
+		//
 		//// respective "real" EObject, in the derived state if its a reference to something
+		//
 		//// in an EFactory resource, or a reference to an existing non-EFactory EObject, 
+		//
 		//// e.g. in an integration scenario with other Xtext grammars.
-		//value=[ecore::EObject|QualifiedName]
+		// value=[ecore::EObject|StringOrQualifiedName]
 		public Assignment getValueAssignment() { return cValueAssignment; }
 
-		//[ecore::EObject|QualifiedName]
+		//[ecore::EObject|StringOrQualifiedName]
 		public CrossReference getValueEObjectCrossReference_0() { return cValueEObjectCrossReference_0; }
 
-		//QualifiedName
-		public RuleCall getValueEObjectQualifiedNameParserRuleCall_0_1() { return cValueEObjectQualifiedNameParserRuleCall_0_1; }
+		//StringOrQualifiedName
+		public RuleCall getValueEObjectStringOrQualifiedNameParserRuleCall_0_1() { return cValueEObjectStringOrQualifiedNameParserRuleCall_0_1; }
 	}
 
 	public class AttributeElements extends AbstractParserRuleElementFinder {
@@ -464,26 +483,26 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cColonKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final CrossReference cValueEEnumLiteralCrossReference_1_0 = (CrossReference)cValueAssignment_1.eContents().get(0);
-		private final RuleCall cValueEEnumLiteralQualifiedNameParserRuleCall_1_0_1 = (RuleCall)cValueEEnumLiteralCrossReference_1_0.eContents().get(1);
+		private final RuleCall cValueEEnumLiteralStringOrQualifiedNameParserRuleCall_1_0_1 = (RuleCall)cValueEEnumLiteralCrossReference_1_0.eContents().get(1);
 		
 		//EnumAttribute:
-		//	":" value=[ecore::EEnumLiteral|QualifiedName];
+		//	":" value=[ecore::EEnumLiteral|StringOrQualifiedName];
 		@Override public ParserRule getRule() { return rule; }
 
-		//":" value=[ecore::EEnumLiteral|QualifiedName]
+		//":" value=[ecore::EEnumLiteral|StringOrQualifiedName]
 		public Group getGroup() { return cGroup; }
 
 		//":"
 		public Keyword getColonKeyword_0() { return cColonKeyword_0; }
 
-		//value=[ecore::EEnumLiteral|QualifiedName]
+		//value=[ecore::EEnumLiteral|StringOrQualifiedName]
 		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
 
-		//[ecore::EEnumLiteral|QualifiedName]
+		//[ecore::EEnumLiteral|StringOrQualifiedName]
 		public CrossReference getValueEEnumLiteralCrossReference_1_0() { return cValueEEnumLiteralCrossReference_1_0; }
 
-		//QualifiedName
-		public RuleCall getValueEEnumLiteralQualifiedNameParserRuleCall_1_0_1() { return cValueEEnumLiteralQualifiedNameParserRuleCall_1_0_1; }
+		//StringOrQualifiedName
+		public RuleCall getValueEEnumLiteralStringOrQualifiedNameParserRuleCall_1_0_1() { return cValueEEnumLiteralStringOrQualifiedNameParserRuleCall_1_0_1; }
 	}
 
 	public class StringAttributeElements extends AbstractParserRuleElementFinder {
@@ -492,6 +511,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cValueSTRINGTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
 		
 		//// TODO Attribute Types should later not be hard-coded here anymore.. Grammar should be more open & generic.
+		//
 		//StringAttribute:
 		//	value=STRING;
 		@Override public ParserRule getRule() { return rule; }
@@ -603,6 +623,26 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getQualifiedNameWithWildcardParserRuleCall_1() { return cQualifiedNameWithWildcardParserRuleCall_1; }
 	}
 
+	public class StringOrQualifiedNameElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "StringOrQualifiedName");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cSTRINGTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cQualifiedNameParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//StringOrQualifiedName:
+		//	STRING | QualifiedName;
+		@Override public ParserRule getRule() { return rule; }
+
+		//STRING | QualifiedName
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//STRING
+		public RuleCall getSTRINGTerminalRuleCall_0() { return cSTRINGTerminalRuleCall_0; }
+
+		//QualifiedName
+		public RuleCall getQualifiedNameParserRuleCall_1() { return cQualifiedNameParserRuleCall_1; }
+	}
+
 	public class QualifiedNameWithWildcardElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "QualifiedNameWithWildcard");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -659,7 +699,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cLONG_UNSIGNEDTerminalRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//// This is needed so that IDs consisting only of digit/numbers work, including in QualifiedName (DS-8268).
-		//ValidID:
+		// ValidID:
 		//	ID | LONG_ID | LONG_UNSIGNED;
 		@Override public ParserRule getRule() { return rule; }
 
@@ -683,6 +723,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cFalseKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
 		
 		//// Double and Date are Xtext data types instead of terminals, because if they are terminals there is some confusion about the '.' in them vs. the QualifiedName dot in case a QualifiedName has parts consisting only of numbers  
+		//
 		//Boolean returns ecore::EBoolean:
 		//	"true" | "false";
 		@Override public ParserRule getRule() { return rule; }
@@ -793,6 +834,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	private final NullAttributeElements pNullAttribute;
 	private final BooleanAttributeElements pBooleanAttribute;
 	private final StringOrQualifiedNameWithWildcardElements pStringOrQualifiedNameWithWildcard;
+	private final StringOrQualifiedNameElements pStringOrQualifiedName;
 	private final QualifiedNameWithWildcardElements pQualifiedNameWithWildcard;
 	private final QualifiedNameElements pQualifiedName;
 	private final ValidIDElements pValidID;
@@ -832,6 +874,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		this.pNullAttribute = new NullAttributeElements();
 		this.pBooleanAttribute = new BooleanAttributeElements();
 		this.pStringOrQualifiedNameWithWildcard = new StringOrQualifiedNameWithWildcardElements();
+		this.pStringOrQualifiedName = new StringOrQualifiedNameElements();
 		this.pQualifiedNameWithWildcard = new QualifiedNameWithWildcardElements();
 		this.pQualifiedName = new QualifiedNameElements();
 		this.pValidID = new ValidIDElements();
@@ -892,6 +935,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//// TODO Content Assist for EPackage .. but one COULD also import other named NewObject / EObject, instead of EPackages.. hm. As EPackage will be much more common, just support that.	
+	//
 	//NamespaceImport:
 	//	"import" importedNamespace=QualifiedNameWithWildcard;
 	public NamespaceImportElements getNamespaceImportAccess() {
@@ -913,9 +957,12 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//// TODO further consider if name mapping is best put in-line into objects.. it would have to repeat in every file..
+	//
 	//// logically this rather belongs into an external mapping, like HUTN's Configuration (HutnConfig), or even better directly into an Xcore as annotations 
+	//
 	//CustomNameMapping:
-	//	"@Name" "{" eClass=[ecore::EClass|QualifiedName] "=" nameFeature=[ecore::EAttribute|QualifiedName] "}";
+	//	"@Name" "{" eClass=[ecore::EClass|StringOrQualifiedName] "=" nameFeature=[ecore::EAttribute|StringOrQualifiedName]
+	//	"}";
 	public CustomNameMappingElements getCustomNameMappingAccess() {
 		return pCustomNameMapping;
 	}
@@ -925,7 +972,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Feature:
-	//	eFeature=[ecore::EStructuralFeature|QualifiedName] ":" value=Value?;
+	//	eFeature=[ecore::EStructuralFeature|StringOrQualifiedName] ":" value=Value?;
 	public FeatureElements getFeatureAccess() {
 		return pFeature;
 	}
@@ -935,13 +982,18 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//// Re. use of QualifiedName, see SimplestWeiredNameTest (we want to permit EAttribute name to have dots; strange yes, but due to a particular requirement in an in-house closed source product)
+	//
 	//// Also value isn't really optional semantically of course
+	//
 	//// but because it may be missing while typing, this works out much better in practice like this
+	//
 	//// the EFactoryJavaValidator flags it up if it's really missing
+	//
 	//// without this, there are confusing parsing errors, the proposal provider doesn't work as it should, etc.
+	//
 	//// Note that this is also in-lined below; if making changes, adapt below too
-	//NewObject:
-	//	eClass=[ecore::EClass|QualifiedName] name=ValidID? "{" features+=Feature* "}";
+	// NewObject:
+	//	eClass=[ecore::EClass|StringOrQualifiedName] name=ValidID? "{" features+=Feature* "}";
 	public NewObjectElements getNewObjectAccess() {
 		return pNewObject;
 	}
@@ -952,8 +1004,10 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 
 	//Value:
 	//	MultiValue // Following is an in-lined NewObject, if making changes, adapt above too
+	//
 	//	// The Syntactic Predicate => is needed here to solve "Decision can match input such as "RULE_ID '.' RULE_ID {RULE_STRING..RULE_DATE, '}', '['..'false'}" using multiple alternatives: 3, 4"
-	//	| Attribute | => ({NewObject} eClass=[ecore::EClass|QualifiedName]? name=ValidID? "{") features+=Feature* "}"
+	//
+	//	| Attribute | => ({NewObject} eClass=[ecore::EClass|StringOrQualifiedName]? name=ValidID? "{") features+=Feature* "}"
 	//	{Containment.value=current} | => Reference;
 	public ValueElements getValueAccess() {
 		return pValue;
@@ -974,10 +1028,13 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Reference: // NOTE we ref. an EObject, and not an [NewObject].. this EObject is always the
+	//
 	//// respective "real" EObject, in the derived state if its a reference to something
+	//
 	//// in an EFactory resource, or a reference to an existing non-EFactory EObject, 
+	//
 	//// e.g. in an integration scenario with other Xtext grammars.
-	//	value=[ecore::EObject|QualifiedName];
+	// value=[ecore::EObject|StringOrQualifiedName];
 	public ReferenceElements getReferenceAccess() {
 		return pReference;
 	}
@@ -998,7 +1055,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//EnumAttribute:
-	//	":" value=[ecore::EEnumLiteral|QualifiedName];
+	//	":" value=[ecore::EEnumLiteral|StringOrQualifiedName];
 	public EnumAttributeElements getEnumAttributeAccess() {
 		return pEnumAttribute;
 	}
@@ -1008,6 +1065,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//// TODO Attribute Types should later not be hard-coded here anymore.. Grammar should be more open & generic.
+	//
 	//StringAttribute:
 	//	value=STRING;
 	public StringAttributeElements getStringAttributeAccess() {
@@ -1078,6 +1136,16 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 		return getStringOrQualifiedNameWithWildcardAccess().getRule();
 	}
 
+	//StringOrQualifiedName:
+	//	STRING | QualifiedName;
+	public StringOrQualifiedNameElements getStringOrQualifiedNameAccess() {
+		return pStringOrQualifiedName;
+	}
+	
+	public ParserRule getStringOrQualifiedNameRule() {
+		return getStringOrQualifiedNameAccess().getRule();
+	}
+
 	//QualifiedNameWithWildcard:
 	//	QualifiedName ".*"?;
 	public QualifiedNameWithWildcardElements getQualifiedNameWithWildcardAccess() {
@@ -1099,7 +1167,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//// This is needed so that IDs consisting only of digit/numbers work, including in QualifiedName (DS-8268).
-	//ValidID:
+	// ValidID:
 	//	ID | LONG_ID | LONG_UNSIGNED;
 	public ValidIDElements getValidIDAccess() {
 		return pValidID;
@@ -1110,6 +1178,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//// Double and Date are Xtext data types instead of terminals, because if they are terminals there is some confusion about the '.' in them vs. the QualifiedName dot in case a QualifiedName has parts consisting only of numbers  
+	//
 	//Boolean returns ecore::EBoolean:
 	//	"true" | "false";
 	public BooleanElements getBooleanAccess() {
@@ -1151,6 +1220,7 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//// TODO Date and other attribute values syntax should later not be hard-coded here anymore at all.. Grammar should be more open & generic.
+	//
 	//terminal LONG_ID:
 	//	LONG_UNSIGNED ID;
 	public TerminalRule getLONG_IDRule() {
@@ -1164,18 +1234,26 @@ public class EFactoryGrammarAccess extends AbstractGrammarElementFinder {
 	} 
 
 	//// Due to historic reasons in a closed source an in-house product which uses ESON
+	//
 	//// we need to add ',' and '-' to be allowed in IDs.  We also permit ID starting with digits, via the ValidID: ID | LONG above.
+	//
 	//// (NOTE: This terminal must be named 'ID' as well, not some new ID2 - unless you write a new ValueConverter for it.)
+	//
 	//// PS: Order of terminals appears to matter - ID needs to come last (at least it used to matter; perhaps no longer after grammar changes which made attribute value data type rules instead of terminals)
+	//
 	//// TODO copy/paste org.eclipse.xtext.common.Terminals 
-	////terminal STRING	: 
+	// //terminal STRING	: 
+	//
 	////			'"' ( '\\' . / * 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' * / | !('\\'|'"') )* '"' |
+	//
 	////			"'" ( '\\' . / * 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' * / | !('\\'|"'") )* "'" ; 
+	//
 	////terminal ML_COMMENT	: '/ *' -> '* /';
-	////terminal SL_COMMENT : '//' !('\n'|'\r')* ('\r'? '\n')?;
-	////
+	// //terminal SL_COMMENT : '//' !('\n'|'\r')* ('\r'? '\n')?;
+	// //
+	//
 	////terminal WS			: (' '|'\t'|'\r'|'\n')+;
-	//terminal ID:
+	// terminal ID:
 	//	"^"? ("a".."z" | "A".."Z" | "_" | "," | "-") ("a".."z" | "A".."Z" | "_" | "," | "-" | "0".."9")*;
 	public TerminalRule getIDRule() {
 		return tID;

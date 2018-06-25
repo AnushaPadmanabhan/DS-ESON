@@ -78,6 +78,7 @@ public class EFactoryJavaValidator extends AbstractEFactoryJavaValidator {
 	protected @Inject NameAccessor nameAccessor;
 	protected @Inject XtextProxyUtil xtextProxyUtil;
 	protected @Inject NewObjectExtensions newObjectExtensions;
+	protected @Inject EFactoryValidatorExtensionRegistry attributeValidatorRegistry;
 
 	protected class AttributeValidator extends EFactorySwitch<Boolean> {
 
@@ -464,6 +465,12 @@ public class EFactoryJavaValidator extends AbstractEFactoryJavaValidator {
 		    error("Value must be an attribute but is a reference", null);
 
 		attributeValidator.doSwitch(attribute);
+		// run custom validators
+		Iterable<AbstractESONAttributeCustomValidator> validators = attributeValidatorRegistry.getValidators();
+		for (AbstractESONAttributeCustomValidator validator : validators) {
+			validator.setMessageAcceptor(getMessageAcceptor());
+			validator.doSwitch(attribute);
+		}
 	}
 
 	private Feature getFeature(Value value) {

@@ -121,7 +121,7 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (eClass=[EClass|QualifiedName] nameFeature=[EAttribute|QualifiedName])
+	 *     (eClass=[EClass|StringOrQualifiedName] nameFeature=[EAttribute|StringOrQualifiedName])
 	 */
 	protected void sequence_CustomNameMapping(EObject context, CustomNameMapping semanticObject) {
 		if(errorAcceptor != null) {
@@ -132,8 +132,8 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getCustomNameMappingAccess().getEClassEClassQualifiedNameParserRuleCall_2_0_1(), semanticObject.getEClass());
-		feeder.accept(grammarAccess.getCustomNameMappingAccess().getNameFeatureEAttributeQualifiedNameParserRuleCall_4_0_1(), semanticObject.getNameFeature());
+		feeder.accept(grammarAccess.getCustomNameMappingAccess().getEClassEClassStringOrQualifiedNameParserRuleCall_2_0_1(), semanticObject.getEClass());
+		feeder.accept(grammarAccess.getCustomNameMappingAccess().getNameFeatureEAttributeStringOrQualifiedNameParserRuleCall_4_0_1(), semanticObject.getNameFeature());
 		feeder.finish();
 	}
 	
@@ -172,7 +172,7 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     value=[EEnumLiteral|QualifiedName]
+	 *     value=[EEnumLiteral|StringOrQualifiedName]
 	 */
 	protected void sequence_EnumAttribute(EObject context, EnumAttribute semanticObject) {
 		if(errorAcceptor != null) {
@@ -181,7 +181,7 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralQualifiedNameParserRuleCall_1_0_1(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralStringOrQualifiedNameParserRuleCall_1_0_1(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -197,7 +197,7 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (eFeature=[EStructuralFeature|QualifiedName] value=Value?)
+	 *     (eFeature=[EStructuralFeature|StringOrQualifiedName] value=Value?)
 	 */
 	protected void sequence_Feature(EObject context, Feature semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -247,7 +247,7 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (eClass=[EClass|QualifiedName] name=ValidID? features+=Feature*)
+	 *     (eClass=[EClass|StringOrQualifiedName] name=ValidID? features+=Feature*)
 	 */
 	protected void sequence_NewObject(EObject context, NewObject semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -288,7 +288,7 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     value=[EObject|QualifiedName]
+	 *     value=[EObject|StringOrQualifiedName]
 	 */
 	protected void sequence_Reference(EObject context, Reference semanticObject) {
 		if(errorAcceptor != null) {
@@ -297,7 +297,7 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getReferenceAccess().getValueEObjectQualifiedNameParserRuleCall_0_1(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getReferenceAccess().getValueEObjectStringOrQualifiedNameParserRuleCall_0_1(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -336,7 +336,7 @@ public class EFactorySemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Constraint:
-	 *     (eClass=[EClass|QualifiedName]? name=ValidID? features+=Feature*)
+	 *     (eClass=[EClass|StringOrQualifiedName]? name=ValidID? features+=Feature*)
 	 */
 	protected void sequence_Value_Containment_2_3(EObject context, NewObject semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

@@ -23,7 +23,10 @@ import com.google.inject.Inject;
 public class TerminalConverters extends DefaultTerminalConverters {
 
 	@Inject protected DATEValueConverter dateValueConverter;
-	@Inject protected StringOrQualifiedNameWithWildcardValueConverter stringOrQualifiedNameValueConverter; 
+	@Inject protected StringOrQualifiedNameWithWildcardValueConverter stringOrQualifiedNameWithWildcardValueConverter; 
+	
+	@Inject
+	protected StringOrQualifiedNameValueConverter stringOrQualifiedNameValueConverter;
 	
 	@ValueConverter(rule = "Date")
 	public IValueConverter<Date> Date() {
@@ -31,8 +34,12 @@ public class TerminalConverters extends DefaultTerminalConverters {
 	}
 
 	@ValueConverter(rule = "StringOrQualifiedNameWithWildcard")
+	public IValueConverter<String> StringOrQualifiedNameWithWildcard() {
+		return stringOrQualifiedNameWithWildcardValueConverter;
+	}
+
+	@ValueConverter(rule = "StringOrQualifiedName")
 	public IValueConverter<String> StringOrQualifiedName() {
 		return stringOrQualifiedNameValueConverter;
 	}
-
 }

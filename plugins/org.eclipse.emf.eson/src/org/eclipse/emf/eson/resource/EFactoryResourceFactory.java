@@ -14,6 +14,7 @@ package org.eclipse.emf.eson.resource;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.eson.validation.ESONResourceValidationUtils;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.resource.XtextResourceFactory;
 
@@ -34,6 +35,7 @@ public class EFactoryResourceFactory extends XtextResourceFactory {
 	public Resource createResource(URI uri) {
 		EFactoryResource resource = efactoryResourceProvider.get();
 		resource.setURI(uri);
+		resource.setValidationDisabled(ESONResourceValidationUtils.isValidationDisabled(uri));
 		return resource;
 	}
 }

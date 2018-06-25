@@ -301,7 +301,7 @@ ruleCustomNameMapping returns [EObject current=null]
 		{ 
 	        newCompositeNode(grammarAccess.getCustomNameMappingAccess().getEClassEClassCrossReference_2_0()); 
 	    }
-		ruleQualifiedName		{ 
+		ruleStringOrQualifiedName		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -320,7 +320,7 @@ ruleCustomNameMapping returns [EObject current=null]
 		{ 
 	        newCompositeNode(grammarAccess.getCustomNameMappingAccess().getNameFeatureEAttributeCrossReference_4_0()); 
 	    }
-		ruleQualifiedName		{ 
+		ruleStringOrQualifiedName		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -360,7 +360,7 @@ ruleFeature returns [EObject current=null]
 		{ 
 	        newCompositeNode(grammarAccess.getFeatureAccess().getEFeatureEStructuralFeatureCrossReference_0_0()); 
 	    }
-		ruleQualifiedName		{ 
+		ruleStringOrQualifiedName		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -418,7 +418,7 @@ ruleNewObject returns [EObject current=null]
 		{ 
 	        newCompositeNode(grammarAccess.getNewObjectAccess().getEClassEClassCrossReference_0_0()); 
 	    }
-		ruleQualifiedName		{ 
+		ruleStringOrQualifiedName		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -511,7 +511,7 @@ ruleValue returns [EObject current=null]
     |(((((
 )(
 (
-		ruleQualifiedName
+		ruleStringOrQualifiedName
 )
 )?(
 (
@@ -534,7 +534,7 @@ ruleValidID
 		{ 
 	        newCompositeNode(grammarAccess.getValueAccess().getEClassEClassCrossReference_2_0_0_1_0()); 
 	    }
-		ruleQualifiedName		{ 
+		ruleStringOrQualifiedName		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -683,7 +683,7 @@ ruleReference returns [EObject current=null]
 		{ 
 	        newCompositeNode(grammarAccess.getReferenceAccess().getValueEObjectCrossReference_0()); 
 	    }
-		ruleQualifiedName		{ 
+		ruleStringOrQualifiedName		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -813,7 +813,7 @@ ruleEnumAttribute returns [EObject current=null]
 		{ 
 	        newCompositeNode(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralCrossReference_1_0()); 
 	    }
-		ruleQualifiedName		{ 
+		ruleStringOrQualifiedName		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
@@ -1084,6 +1084,46 @@ ruleStringOrQualifiedNameWithWildcard returns [AntlrDatatypeRuleToken current=ne
     }
     this_QualifiedNameWithWildcard_1=ruleQualifiedNameWithWildcard    {
 		$current.merge(this_QualifiedNameWithWildcard_1);
+    }
+
+    { 
+        afterParserOrEnumRuleCall();
+    }
+)
+    ;
+
+
+
+
+
+// Entry rule entryRuleStringOrQualifiedName
+entryRuleStringOrQualifiedName returns [String current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getStringOrQualifiedNameRule()); } 
+	 iv_ruleStringOrQualifiedName=ruleStringOrQualifiedName 
+	 { $current=$iv_ruleStringOrQualifiedName.current.getText(); }  
+	 EOF 
+;
+
+// Rule StringOrQualifiedName
+ruleStringOrQualifiedName returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(    this_STRING_0=RULE_STRING    {
+		$current.merge(this_STRING_0);
+    }
+
+    { 
+    newLeafNode(this_STRING_0, grammarAccess.getStringOrQualifiedNameAccess().getSTRINGTerminalRuleCall_0()); 
+    }
+
+    |
+    { 
+        newCompositeNode(grammarAccess.getStringOrQualifiedNameAccess().getQualifiedNameParserRuleCall_1()); 
+    }
+    this_QualifiedName_1=ruleQualifiedName    {
+		$current.merge(this_QualifiedName_1);
     }
 
     { 

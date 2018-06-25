@@ -1,4 +1,4 @@
-use testmodel
+use testmodel.*
 
 TestModel testModelName {
     singleRequired: {

@@ -589,6 +589,34 @@ finally {
 
 
 
+// Entry rule entryRuleStringOrQualifiedName
+entryRuleStringOrQualifiedName 
+:
+{ before(grammarAccess.getStringOrQualifiedNameRule()); }
+	 ruleStringOrQualifiedName
+{ after(grammarAccess.getStringOrQualifiedNameRule()); } 
+	 EOF 
+;
+
+// Rule StringOrQualifiedName
+ruleStringOrQualifiedName
+    @init {
+		int stackSize = keepStackSize();
+    }
+	:
+(
+{ before(grammarAccess.getStringOrQualifiedNameAccess().getAlternatives()); }
+(rule__StringOrQualifiedName__Alternatives)
+{ after(grammarAccess.getStringOrQualifiedNameAccess().getAlternatives()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
 // Entry rule entryRuleQualifiedNameWithWildcard
 entryRuleQualifiedNameWithWildcard 
 :
@@ -887,6 +915,28 @@ rule__StringOrQualifiedNameWithWildcard__Alternatives
 { before(grammarAccess.getStringOrQualifiedNameWithWildcardAccess().getQualifiedNameWithWildcardParserRuleCall_1()); }
 	ruleQualifiedNameWithWildcard
 { after(grammarAccess.getStringOrQualifiedNameWithWildcardAccess().getQualifiedNameWithWildcardParserRuleCall_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__StringOrQualifiedName__Alternatives
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getStringOrQualifiedNameAccess().getSTRINGTerminalRuleCall_0()); }
+	RULE_STRING
+{ after(grammarAccess.getStringOrQualifiedNameAccess().getSTRINGTerminalRuleCall_0()); }
+)
+
+    |(
+{ before(grammarAccess.getStringOrQualifiedNameAccess().getQualifiedNameParserRuleCall_1()); }
+	ruleQualifiedName
+{ after(grammarAccess.getStringOrQualifiedNameAccess().getQualifiedNameParserRuleCall_1()); }
 )
 
 ;
@@ -2725,8 +2775,8 @@ rule__CustomNameMapping__EClassAssignment_2
 (
 { before(grammarAccess.getCustomNameMappingAccess().getEClassEClassCrossReference_2_0()); }
 (
-{ before(grammarAccess.getCustomNameMappingAccess().getEClassEClassQualifiedNameParserRuleCall_2_0_1()); }
-	ruleQualifiedName{ after(grammarAccess.getCustomNameMappingAccess().getEClassEClassQualifiedNameParserRuleCall_2_0_1()); }
+{ before(grammarAccess.getCustomNameMappingAccess().getEClassEClassStringOrQualifiedNameParserRuleCall_2_0_1()); }
+	ruleStringOrQualifiedName{ after(grammarAccess.getCustomNameMappingAccess().getEClassEClassStringOrQualifiedNameParserRuleCall_2_0_1()); }
 )
 { after(grammarAccess.getCustomNameMappingAccess().getEClassEClassCrossReference_2_0()); }
 )
@@ -2744,8 +2794,8 @@ rule__CustomNameMapping__NameFeatureAssignment_4
 (
 { before(grammarAccess.getCustomNameMappingAccess().getNameFeatureEAttributeCrossReference_4_0()); }
 (
-{ before(grammarAccess.getCustomNameMappingAccess().getNameFeatureEAttributeQualifiedNameParserRuleCall_4_0_1()); }
-	ruleQualifiedName{ after(grammarAccess.getCustomNameMappingAccess().getNameFeatureEAttributeQualifiedNameParserRuleCall_4_0_1()); }
+{ before(grammarAccess.getCustomNameMappingAccess().getNameFeatureEAttributeStringOrQualifiedNameParserRuleCall_4_0_1()); }
+	ruleStringOrQualifiedName{ after(grammarAccess.getCustomNameMappingAccess().getNameFeatureEAttributeStringOrQualifiedNameParserRuleCall_4_0_1()); }
 )
 { after(grammarAccess.getCustomNameMappingAccess().getNameFeatureEAttributeCrossReference_4_0()); }
 )
@@ -2763,8 +2813,8 @@ rule__Feature__EFeatureAssignment_0
 (
 { before(grammarAccess.getFeatureAccess().getEFeatureEStructuralFeatureCrossReference_0_0()); }
 (
-{ before(grammarAccess.getFeatureAccess().getEFeatureEStructuralFeatureQualifiedNameParserRuleCall_0_0_1()); }
-	ruleQualifiedName{ after(grammarAccess.getFeatureAccess().getEFeatureEStructuralFeatureQualifiedNameParserRuleCall_0_0_1()); }
+{ before(grammarAccess.getFeatureAccess().getEFeatureEStructuralFeatureStringOrQualifiedNameParserRuleCall_0_0_1()); }
+	ruleStringOrQualifiedName{ after(grammarAccess.getFeatureAccess().getEFeatureEStructuralFeatureStringOrQualifiedNameParserRuleCall_0_0_1()); }
 )
 { after(grammarAccess.getFeatureAccess().getEFeatureEStructuralFeatureCrossReference_0_0()); }
 )
@@ -2797,8 +2847,8 @@ rule__NewObject__EClassAssignment_0
 (
 { before(grammarAccess.getNewObjectAccess().getEClassEClassCrossReference_0_0()); }
 (
-{ before(grammarAccess.getNewObjectAccess().getEClassEClassQualifiedNameParserRuleCall_0_0_1()); }
-	ruleQualifiedName{ after(grammarAccess.getNewObjectAccess().getEClassEClassQualifiedNameParserRuleCall_0_0_1()); }
+{ before(grammarAccess.getNewObjectAccess().getEClassEClassStringOrQualifiedNameParserRuleCall_0_0_1()); }
+	ruleStringOrQualifiedName{ after(grammarAccess.getNewObjectAccess().getEClassEClassStringOrQualifiedNameParserRuleCall_0_0_1()); }
 )
 { after(grammarAccess.getNewObjectAccess().getEClassEClassCrossReference_0_0()); }
 )
@@ -2846,8 +2896,8 @@ rule__Value__EClassAssignment_2_0_0_1
 (
 { before(grammarAccess.getValueAccess().getEClassEClassCrossReference_2_0_0_1_0()); }
 (
-{ before(grammarAccess.getValueAccess().getEClassEClassQualifiedNameParserRuleCall_2_0_0_1_0_1()); }
-	ruleQualifiedName{ after(grammarAccess.getValueAccess().getEClassEClassQualifiedNameParserRuleCall_2_0_0_1_0_1()); }
+{ before(grammarAccess.getValueAccess().getEClassEClassStringOrQualifiedNameParserRuleCall_2_0_0_1_0_1()); }
+	ruleStringOrQualifiedName{ after(grammarAccess.getValueAccess().getEClassEClassStringOrQualifiedNameParserRuleCall_2_0_0_1_0_1()); }
 )
 { after(grammarAccess.getValueAccess().getEClassEClassCrossReference_2_0_0_1_0()); }
 )
@@ -2910,8 +2960,8 @@ rule__Reference__ValueAssignment
 (
 { before(grammarAccess.getReferenceAccess().getValueEObjectCrossReference_0()); }
 (
-{ before(grammarAccess.getReferenceAccess().getValueEObjectQualifiedNameParserRuleCall_0_1()); }
-	ruleQualifiedName{ after(grammarAccess.getReferenceAccess().getValueEObjectQualifiedNameParserRuleCall_0_1()); }
+{ before(grammarAccess.getReferenceAccess().getValueEObjectStringOrQualifiedNameParserRuleCall_0_1()); }
+	ruleStringOrQualifiedName{ after(grammarAccess.getReferenceAccess().getValueEObjectStringOrQualifiedNameParserRuleCall_0_1()); }
 )
 { after(grammarAccess.getReferenceAccess().getValueEObjectCrossReference_0()); }
 )
@@ -2929,8 +2979,8 @@ rule__EnumAttribute__ValueAssignment_1
 (
 { before(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralCrossReference_1_0()); }
 (
-{ before(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralQualifiedNameParserRuleCall_1_0_1()); }
-	ruleQualifiedName{ after(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralQualifiedNameParserRuleCall_1_0_1()); }
+{ before(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralStringOrQualifiedNameParserRuleCall_1_0_1()); }
+	ruleStringOrQualifiedName{ after(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralStringOrQualifiedNameParserRuleCall_1_0_1()); }
 )
 { after(grammarAccess.getEnumAttributeAccess().getValueEEnumLiteralCrossReference_1_0()); }
 )

@@ -152,7 +152,7 @@ public class EFactoryWithTreeEditor extends XtextEditor implements IEditingDomai
                                     }
                                 };
                                 
-                                if(!IterableExtensions.exists(factoryObj.getEPackages(), predicate)){
+                                if(ePackage.getNsURI()!= null && !IterableExtensions.exists(factoryObj.getEPackages(), predicate)){
                                     PackageImport createPackageImport = EFactoryFactory.eINSTANCE.createPackageImport();
                                     createPackageImport.setEPackage(ePackage);
                                     factoryObj.getEPackages().add(createPackageImport);

@@ -50,6 +50,7 @@ public class EFactoryProposalProvider extends AbstractEFactoryProposalProvider {
 
 	protected @Inject EFactoryGrammarAccess grammar;
 	protected @Inject IEAttributeStringProposalProvider attributeProposalProvider;
+	protected @Inject EFactoryProposalProviderExtensionRegistry extensionRegistry;
 
 	/**
 	 * Blacklist certain Grammar keywords such as "NULL" or ":" (Enum), 
@@ -188,7 +189,17 @@ public class EFactoryProposalProvider extends AbstractEFactoryProposalProvider {
 		if (!EcoreUtil3.isEAttribute(eFeature))
 			return;
 		final EAttribute eAttribute = (EAttribute) eFeature;
-		String[] proposals = attributeProposalProvider.getProposals(eAttribute);
+
+        String[] proposals = null;
+		Iterable<ICustomProposalProvider> proposalProviders = extensionRegistry.getProposalProviders();
+        for (ICustomProposalProvider provider : proposalProviders) {
+            proposals = provider.getProposals(eAttribute);
+            if (proposals != null) {
+                break;
+            }
+        }
+        if (proposals == null)
+            proposals = attributeProposalProvider.getProposals(eAttribute);
 		for (String proposal : proposals) {
 			acceptor.accept(createCompletionProposal(proposal, context));
 		}

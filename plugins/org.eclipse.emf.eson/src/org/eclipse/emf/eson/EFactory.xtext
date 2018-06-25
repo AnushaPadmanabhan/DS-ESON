@@ -27,10 +27,10 @@ Annotation:
 // logically this rather belongs into an external mapping, like HUTN's Configuration (HutnConfig), or even better directly into an Xcore as annotations 
 
 CustomNameMapping:
-	"@Name" "{" eClass=[ecore::EClass|QualifiedName] "=" nameFeature=[ecore::EAttribute|QualifiedName] "}" ;
+	"@Name" "{" eClass=[ecore::EClass|StringOrQualifiedName] "=" nameFeature=[ecore::EAttribute|StringOrQualifiedName] "}" ;
 
 Feature:
-	eFeature=[ecore::EStructuralFeature|QualifiedName] ":" (value=Value)? ;
+	eFeature=[ecore::EStructuralFeature|StringOrQualifiedName] ":" (value=Value)? ;
 	// Re. use of QualifiedName, see SimplestWeiredNameTest (we want to permit EAttribute name to have dots; strange yes, but due to a particular requirement in an in-house closed source product)
 	// Also value isn't really optional semantically of course
 	// but because it may be missing while typing, this works out much better in practice like this
@@ -38,14 +38,14 @@ Feature:
 	// without this, there are confusing parsing errors, the proposal provider doesn't work as it should, etc.
 	
 NewObject: // Note that this is also in-lined below; if making changes, adapt below too
-	eClass=[ecore::EClass|QualifiedName] (name=ValidID)? "{"
+	eClass=[ecore::EClass|StringOrQualifiedName] (name=ValidID)? "{"
 		(features += Feature)*
 	"}";
 
 Value:
 	MultiValue
 	| Attribute | ( // Following is an in-lined NewObject, if making changes, adapt above too
-		=>({NewObject} (eClass=[ecore::EClass|QualifiedName])? (name=ValidID)? "{")
+		=>({NewObject} (eClass=[ecore::EClass|StringOrQualifiedName])? (name=ValidID)? "{")
 			(features += Feature)*
 		"}"
 		{Containment.value=current}
@@ -61,11 +61,11 @@ Reference:
 	// respective "real" EObject, in the derived state if its a reference to something
 	// in an EFactory resource, or a reference to an existing non-EFactory EObject, 
 	// e.g. in an integration scenario with other Xtext grammars.
-	value = [ecore::EObject|QualifiedName];
+	value = [ecore::EObject|StringOrQualifiedName];
 
 Attribute: (EnumAttribute | StringAttribute | IntegerAttribute | BooleanAttribute | DoubleAttribute | DateAttribute | NullAttribute);
 
-EnumAttribute: ":" value = [ecore::EEnumLiteral|QualifiedName];
+EnumAttribute: ":" value = [ecore::EEnumLiteral|StringOrQualifiedName];
 
 
 // TODO Attribute Types should later not be hard-coded here anymore.. Grammar should be more open & generic.
@@ -83,6 +83,7 @@ NullAttribute:    value = "NULL";
 BooleanAttribute: value = Boolean;
 
 StringOrQualifiedNameWithWildcard: STRING | QualifiedNameWithWildcard;
+StringOrQualifiedName: STRING | QualifiedName;
 QualifiedNameWithWildcard: QualifiedName '.*'? ;
 QualifiedName: ValidID (=>'.' ValidID)*;
 ValidID: ID | LONG_ID | LONG_UNSIGNED; // This is needed so that IDs consisting only of digit/numbers work, including in QualifiedName (DS-8268).

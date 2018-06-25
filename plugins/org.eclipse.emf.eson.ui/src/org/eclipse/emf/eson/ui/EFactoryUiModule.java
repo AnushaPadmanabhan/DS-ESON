@@ -19,6 +19,7 @@ import org.eclipse.emf.eson.ui.contentassist.EFactoryContentAssistantFactory;
 import org.eclipse.emf.eson.ui.contentassist.IEAttributeStringProposalProvider;
 import org.eclipse.emf.eson.ui.contentassist.TerminalsEAttributeStringProposalProvider;
 import org.eclipse.emf.eson.ui.editor.EFactoryFoldingRegionProvider;
+import org.eclipse.emf.eson.ui.editor.model.ESONJavaClassPathResourceForIEditorInputFactory;
 import org.eclipse.emf.eson.ui.editor.model.edit.EFactoryTextEditComposer;
 import org.eclipse.emf.eson.ui.generators.JavaProjectClassLoaderProvider;
 import org.eclipse.emf.eson.ui.highlighting.EFactoryHighlightingCalculator;
@@ -33,6 +34,7 @@ import org.eclipse.xtext.service.DispatchingProvider;
 import org.eclipse.xtext.ui.editor.contentassist.IContentAssistantFactory;
 import org.eclipse.xtext.ui.editor.contentassist.XtextContentAssistProcessor;
 import org.eclipse.xtext.ui.editor.folding.IFoldingRegionProvider;
+import org.eclipse.xtext.ui.editor.model.IResourceForEditorInputFactory;
 import org.eclipse.xtext.ui.editor.model.edit.ITextEditComposer;
 import org.eclipse.xtext.ui.editor.outline.impl.OutlineFilterAndSorter.IComparator;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.AbstractAntlrTokenToAttributeIdMapper;
@@ -110,5 +112,10 @@ public class EFactoryUiModule extends AbstractEFactoryUiModule {
     public void configureUiEncodingProvider(Binder binder) {
         binder.bind(IEncodingProvider.class).annotatedWith(DispatchingProvider.Ui.class).to(EFactoryEncodingProvider.class);
     }
+    
+    @Override
+    public Class<? extends IResourceForEditorInputFactory> bindIResourceForEditorInputFactory() {
+        return ESONJavaClassPathResourceForIEditorInputFactory.class;
+    }  
 
 }

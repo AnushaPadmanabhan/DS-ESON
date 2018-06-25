@@ -1,0 +1,17 @@
+use attributeWithSpecialChar.*
+
+AttributeWithSpecialCharClass1 {
+
+    ".attributeNameWithSpecialChar": "A"
+
+    "attributeNameWithSpecialChar.": "B"
+
+    "attributeNameWith..SpecialChar": "C"
+
+    "@id": "D"
+    
+    "simpleAttributeAsString": "E"
+    
+    "extreme\"name": "F"
+
+}
